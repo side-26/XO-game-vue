@@ -47,5 +47,35 @@ watch([winner, board], ([winnerVal, boardVal]) => {
 });
 </script>
 <template>
-  <div class="home text-red-500">this is home page</div>
+  <main
+    class="dark:bg-gray-800 min-h-screen dark:text-white text-center flex justify-center items-center flex-col"
+  >
+    <h2 class="py-12 text-5xl font-bold capitalize">this is XO game</h2>
+    <div class="py-4 text-xl">player {{ player }}'s turn</div>
+    <section class="flex justify-center items-center">
+      <div v-for="(row, x) in board" :key="x" class="">
+        <div
+          v-for="(col, y) in row"
+          :key="y"
+          @click="makeMove(x, y)"
+          :class="`w-20 h-20 border-white border flex justify-center items-center text-2xl hover:bg-gray-700 cursor-pointer ${
+            board[x][y] === 'x' ? 'text-red-500' : 'text-blue-500'
+          }`"
+        >
+          {{ board[x][y] }}
+        </div>
+      </div>
+    </section>
+    <section class="py-5">
+      <button
+        @click="resetGame"
+        class="bg-red-500 text-white px-5 py-2 hover:bg-red-600 duration-300 rounded font-bold"
+      >
+        reset game
+      </button>
+      <div v-if="winner" class="text-6xl uppercase my-3">
+        the winner is {{ winner }}!!
+      </div>
+    </section>
+  </main>
 </template>
