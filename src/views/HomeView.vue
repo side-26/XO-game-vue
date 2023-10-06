@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { computed, reactive, ref, unref, watch } from "vue";
 const player = ref<"x" | "o">("x");
-
 const board = reactive<string[][]>([
   ["", "", ""],
   ["", "", ""],
